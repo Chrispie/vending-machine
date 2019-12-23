@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">CVS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin">Admin <span class="sr-only">admin</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<br/>
+
+<div class="container my-5">
+    <div class="row">
+        <h1>Welcome to Chrispie's Vending Service</h1>
+    </div>
+
+    <div class="row">
+        <p>Amount Deposited: <span th:text="${money}">0</span></p>
+    </div>
+
+    <div class="row">
+        <p>Info Message: <span th:text="${infoMessage}"></span></p>
+    </div>
+
+
+    <div class="row">
+        <h4>Please enter coins by selecting the buttons below and then select your drink of choice. </h4>
+    </div>
+
+    <div class="row top-buffer" >
+        <form action="#" th:action="@{/deposit}" method="post"style="margin-right: 4px; margin-bottom: 10px">
+            <button type="submit" class="btn btn-primary" th:name="coinValue" th:value="0.5">Insert 50c coin</button>
+            <button type="submit" class="btn btn-primary" th:name="coinValue" th:value="1">Insert a 1 € coin</button>
+            <button type="submit" class="btn btn-primary" th:name="coinValue" th:value="-1">Insert any other coin
+            </button>
+        </form>
+
+        <form action="#" th:action="@{/refund}" method="post">
+            <button type="submit" class="btn btn-danger">Refund All Money</button>
+        </form>
+
+    </div>
+
+    <div class="row">
+        <h4>Please select your drink</h4>
+    </div>
+
+    <div class="row top-buffer">
+        <form action="#" th:action="@{/select-product}" method="post">
+            <table>
+                <tr>
+                    <td>
+                        <button type="submit" style="width: 200px;" class="btn btn-primary" th:name="productId" th:value="1">Cola @ € 0.50</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" style="width: 200px;" class="btn btn-primary" th:name="productId" th:value="2">Sprite @ € 1.50</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" style="width: 200px;" class="btn btn-primary" th:name="productId" th:value="3">Fanta € 1.00</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

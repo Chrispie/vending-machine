@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">CVS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Admin <span class="sr-only">admin</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="row">
+        <h1>Welcome to Chrispie's Vending Service for admins</h1>
+    </div>
+        <br/>
+    <div class="row">
+        <h2>Inventory</h2>
+    </div>
+    <div class="row">
+        <form action="#" th:action="@{/increase-inventory}" method="post" style="margin-right: 4px; margin-bottom: 10px">
+            <table style="border: dashed">
+                <tr>
+                    <td>Product Id</td>
+                    <td>Description</td>
+                    <td>Price</td>
+                    <td>Quantity Avail</td>
+                    <td>Add more stock</td>
+                </tr>
+                <tr th:each="i: ${inventories}">
+                        <td th:text="${i.productId}" />
+                        <td th:text="${i.description}" />
+                        <td th:text="${i.price}" />
+                        <td th:text="${i.qty}" />
+                        <td>
+                            <button type="submit" class="btn btn-danger" th:name="productId" th:value="${i.productId}">Add 1</button>
+                        </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <h2>Sales</h2>
+    </div>
+    <div class="row">
+        <form action="#" style="margin-right: 4px; margin-bottom: 10px">
+            <table style="border: dashed">
+                <tr>
+                    <td>Sale Id</td>
+                    <td>Description</td>
+                    <td>Sale Date</td>
+                    <td>Qty</td>
+                    <td>Price</td>
+                    <td>Total</td>
+                </tr>
+                <tr th:each="s: ${sales}">
+                        <td th:text="${s.saleId}" />
+                        <td th:text="${s.description}" />
+                        <td th:text="${s.effDate}" />
+                        <td th:text="${s.qty}" />
+                        <td th:text="${s.price}" />
+                        <td th:text="${s.total}" />
+                </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+</div>
+</body>
+</html>
