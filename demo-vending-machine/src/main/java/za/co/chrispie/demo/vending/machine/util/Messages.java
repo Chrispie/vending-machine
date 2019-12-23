@@ -1,5 +1,8 @@
 package za.co.chrispie.demo.vending.machine.util;
 
+/**
+ * System wide messages
+ */
 public class Messages {
 
  public static final String ERR_MSG_INVALID_COIN_TYPE = "Invalid coin inserted. Only accepting 50c and 1€ coins only. Coin refunded";

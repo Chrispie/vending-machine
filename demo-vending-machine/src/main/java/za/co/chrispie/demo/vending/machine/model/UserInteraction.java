@@ -6,6 +6,10 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+/**
+ * User interaction that is session scoped based. Though in real life only one person could access the vending machine at a time, this
+ * demo could be accessed from multiple browsers.
+ */
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UserInteraction {

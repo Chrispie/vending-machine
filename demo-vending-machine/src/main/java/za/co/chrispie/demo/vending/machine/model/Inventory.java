@@ -2,6 +2,9 @@ package za.co.chrispie.demo.vending.machine.model;
 
 import java.math.BigDecimal;
 
+/**
+ * Domain model to display on the front end of what is currently still avail
+ */
 public class Inventory {
 
     private int productId;

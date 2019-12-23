@@ -3,6 +3,9 @@ package za.co.chrispie.demo.vending.machine.model;
 import java.math.BigDecimal;
 import java.sql.Date;
 
+/**
+ * Domain model to indicate what sales was done.
+ */
 public class Sales {
 
     private Integer saleId;

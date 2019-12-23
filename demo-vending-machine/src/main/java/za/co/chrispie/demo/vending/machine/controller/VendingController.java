@@ -29,6 +29,12 @@ public class VendingController {
     @Autowired
     private ProductRepository productRepository;
 
+    /**
+     * Deposit money into the vending machine
+     * This checks if it is a valid coin (50c/1)
+     * Returns an error message and refund if it is incorrect
+     * Else deposit and update balance.
+     */
     @PostMapping("/deposit")
     public String depositMoney(@RequestParam("coinValue") final BigDecimal coinValue, final Model model) {
 
@@ -49,6 +55,11 @@ public class VendingController {
         return "index";
     }
 
+    /**
+     * When a product is selected the system checks if the item is still avail and if the money is enough
+     * If it is enough it dispense it and deduct the money
+     * Ele it will display an info message the the user.
+     */
     @PostMapping("/select-product")
     public String selectProduct(@RequestParam("productId") final Integer productId, final Model model) {
         BigDecimal moneyDeposited = userInteraction.getMoneyDeposited();
